@@ -1,4 +1,4 @@
-FROM openjdk:21 ubuntu
+FROM ubuntu
 WORKDIR /app
 RUN apt-get update && apt-get install maven openjdk-21-jdk -y
 RUN mvn clean package
