@@ -1,5 +1,7 @@
-FROM openjdk:21
+FROM openjdk:21 ubuntu
 WORKDIR /app
-COPY target/*.jar app.jar
-ENTRYPOINT ["java", "-jar", "app.jar"]
+RUN apt-get update && apt-get install maven openjdk-21-jdk -y
+RUN mvn clean package
+COPY target/*.jar target/app.jar
+ENTRYPOINT ["java", "-jar", "target/app.jar"]
 
