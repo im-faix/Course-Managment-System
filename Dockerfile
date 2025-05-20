@@ -6,5 +6,10 @@ RUN mvn clean package
 RUN mv -f target/*.jar target/app.jar
 
 FROM openjdk:17-jdk-slim
-COPY --from=stage . .
+WORKDIR /basic
+COPY --from=stage /app/target/app.jar .
 CMD ["java" ,"-jar","target/app.jar"]
+
+FROM mcp/postgresql
+WORKDIR /app
+
