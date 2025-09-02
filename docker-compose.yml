@@ -1,8 +1,9 @@
 version: '3.8'
 
 services:
-  app:
-    build: .
+  course:
+    image: abdullah77044/course_managment_system:v1
+    restart: always
     ports:
       - "${SERVER_PORT}:${SERVER_PORT}"
     environment:
